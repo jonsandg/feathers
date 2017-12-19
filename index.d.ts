@@ -11,6 +11,7 @@ declare namespace feathers {
 
   interface Params {
     query?: any;
+    url?: any;
     paginate?: false | object;
   }
 
@@ -27,37 +28,37 @@ declare namespace feathers {
      * Retrieves a list of all resources from the service.
      * Provider parameters will be passed as params.query
      */
-    find?(params?: Params, callback?: any): Promise<T[] | Pagination<T>>;
+    find(params?: Params, callback?: any): Promise<T[] | Pagination<T> | T>;
 
     /**
      * Retrieves a single resource with the given id from the service.
      */
-    get?(id: number | string, params?: Params, callback?: any): Promise<T>;
+    get(id: number | string, params?: Params, callback?: any): Promise<T>;
 
     /**
      * Creates a new resource with data.
      */
-    create?(data: T[], params?: Params, callback?: any): Promise<T[]>;
-    create?(data: T , params?: Params, callback?: any): Promise<T>;
+    //create?(data: T[], params?: Params, callback?: any): Promise<T[]>;
+    create(data: T , params?: Params, callback?: any): Promise<T>;
     
     /**
      * Replaces the resource identified by id with data.
      * Update multiples resources with id equal `null`
      */
-    update?(id: NullableId, data: T, params?: Params, callback?: any): Promise<T>;
+    update(id: NullableId, data: T, params?: Params, callback?: any): Promise<T>;
 
     /**
      * Merges the existing data of the resource identified by id with the new data.
      * Implement patch additionally to update if you want to separate between partial and full updates and support the PATCH HTTP method.
      * Patch multiples resources with id equal `null`
      */
-    patch?(id: NullableId, data: any, params?: Params, callback?: any): Promise<T>;
+    patch(id: NullableId, data: any, params?: Params, callback?: any): Promise<T>;
 
     /**
      * Removes the resource with id.
      * Delete multiple resources with id equal `null`
      */
-    remove?(id: NullableId, params?: Params, callback?: any): Promise<T>;
+    remove(id: NullableId, params?: Params, callback?: any): Promise<T>;
 
     /**
      * Initialize your service with any special configuration or if connecting services that are very tightly coupled
